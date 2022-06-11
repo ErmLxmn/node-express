@@ -1,4 +1,6 @@
 const http = require('http')
+const path = require('path')
+const {readFileSync} = require('fs')
 
 const httpMethods = {}
 let get = {}
@@ -8,6 +10,12 @@ httpMethods.get = function(route, callback){
     get[route] = {route , callback}
     this.server = http.createServer();
     this.server.on('request' , function (req, res){
+
+        if(req.url === '/css/style.css'){
+            let page = readFileSync(path.join(__dirname,'..',req.url))
+            return res.end(page)
+        }
+
         if(req.url === '/favicon.ico'){
             return res.end()
         }else if(get[req.url]){
