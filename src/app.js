@@ -10,9 +10,19 @@ http.get('/', function(req, res){
     res.end("Welcome to the home page")
 })
 
+http.get('/event', function(req, res){
+    res.end("Welcome to the event page")
+})
 
 http.get('/about', function(req, res){
-    res.end("Welcome to the home page")
+    res.end("Welcome to the about page")
 })
+
+http.get('/profile', function(req, res){
+    res.end("Welcome to the profile page")
+})
+
+
+http.listen()
 
 
