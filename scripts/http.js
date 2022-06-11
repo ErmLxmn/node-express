@@ -1,17 +1,18 @@
 const http = require('http')
 
 const httpMethods = {}
-let routes = {}
+let get = {}
+let post = {}
 
 httpMethods.get = function(route, callback){
-    routes[route] = {route , callback}
+    get[route] = {route , callback}
     this.server = http.createServer();
     this.server.on('request' , function (req, res){
         if(req.url === '/favicon.ico'){
             return res.end()
-        }else if(routes[req.url]){
-            let here = routes[req.url]
-            let invoke = here['callback']
+        }else if(get[req.url]){
+            let requestCallback = get[req.url]
+            let invoke = requestCallback['callback']
             return invoke(req, res)
         }
         else{
@@ -21,14 +22,14 @@ httpMethods.get = function(route, callback){
 } 
 
 httpMethods.post = function(route, callback){
-    routes[route] = {route , callback}
+    post[route] = {route , callback}
     this.server = http.createServer();
     this.server.on('request' , function (req, res){
         if(req.url === '/favicon.ico'){
             return res.end()
-        }else if(routes[req.url]){
-            let here = routes[req.url]
-            let invoke = here['callback']
+        }else if(post[req.url]){
+            let requestCallback = post[req.url]
+            let invoke = requestCallback['callback']
             return invoke(req, res)
         }
         else{
@@ -37,8 +38,8 @@ httpMethods.post = function(route, callback){
     })
 } 
 
-httpMethods.listen = function (){
-    this.server.listen(3000, ()=>{
+httpMethods.listen = function (port){
+    this.server.listen(port, ()=>{
         console.log("Listening to 3000")
     })
 }
