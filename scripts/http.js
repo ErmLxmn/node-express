@@ -2,14 +2,15 @@ const http = require('http')
 
 const httpMethods = {}
 
-httpMethods.createServer = function (port) {
-    http.createServer(function (req, res){
-        if(req.url === "/")
-            return res.end('Welcome to our home page') 
-        else if(req.url === "/about")
-            return res.end('Welcome to our about page') 
-         res.end(`<a href="/">Go Back Home</a>`)
-    }).listen(port)
-}
+httpMethods.get = function(route, callback){
+    let server = http.createServer(function (req, res){
+        if(req.url === route)
+            callback(req, res)
+        else
+            res.end("Error page doenst exist")
+    })
+
+    return server.listen(3000)
+} 
 
 module.exports = httpMethods

@@ -1,10 +1,12 @@
 {
   "name": "fccnodeandexpresstutorial",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "description": "this a project built for tutorial",
+  "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +21,8 @@
   "homepage": "https://github.com/ErmLxmn/node-express#readme",
   "dependencies": {
     "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
   }
 }
