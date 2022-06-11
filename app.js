@@ -4,6 +4,7 @@ const info = require('./scripts/os')
 const path = require('./scripts/path')
 const fs = require('./scripts/filesystem')
 const http = require('./scripts/http')
+const lodash = require('./scripts/lodash')
 
-http.createServer(3000)
+console.log(lodash.newItems)
 
