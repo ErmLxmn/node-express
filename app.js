@@ -1,10 +1,10 @@
-const name = require('../scripts/names')
-const say = require('../scripts/say')
-const info = require('../scripts/os')
+const name = require('./scripts/names')
+const say = require('./scripts/say')
+const info = require('./scripts/os')
 const path = require('path')
-const fs = require('../scripts/filesystem')
-const http = require('../scripts/http')
-const lodash = require('../scripts/lodash')
+const fs = require('./scripts/filesystem')
+const http = require('./scripts/http')
+const lodash = require('./scripts/lodash')
 const {readFileSync} = require('fs')
 
 http.get('/', function(req, res){
@@ -24,7 +24,7 @@ http.get('/profile', function(req, res){
 })
 
 function pagePath(route){
-    let page = path.join(__dirname,'..','html',route + '.html')
+    let page = path.join('html',route + '.html')
     return readFileSync(page, 'utf8')
 }
 
