@@ -8,7 +8,7 @@ const lodash = require('../scripts/lodash')
 const {readFileSync} = require('fs')
 
 http.get('/', function(req, res){
-    res.end("Hello World")
+    res.end(pagePath('index'))
 })
 
 http.get('/event', function(req, res){
