@@ -16,6 +16,6 @@ app.get('*', function (req, res){
     res.status(404).send('Page Not Found')
 })
 
-app.listen(5000, function (){
+app.listen(process.env.PORT || 5000, function (){
     console.log('server listening to port: 5000')
 })
